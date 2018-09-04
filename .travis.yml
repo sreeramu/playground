@@ -66,6 +66,7 @@ matrix:
         # deploy master to production
         - provider: script
           script: bash script/deploy.sh production
+          skip_cleanup: true
           on:
             branch: master
 cache:
