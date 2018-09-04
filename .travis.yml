@@ -62,7 +62,12 @@ matrix:
         - git clone https://github.com/flutter/flutter.git -b beta --depth 1
       script:
         - ./flutter/bin/flutter -v build apk
-  after_success: ./script/deploy.sh
+      deploy:
+        # deploy master to production
+        - provider: script
+          script: bash script/deploy.sh production
+          on:
+            branch: master
 cache:
   directories:
     - $HOME/.pub-cache

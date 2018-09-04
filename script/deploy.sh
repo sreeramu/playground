@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 mkdir $HOME/daily/
 cp -R /home/travis/build/sreeramu/playground/build/app/outputs/apk/release/app-release.apk $HOME/daily/
