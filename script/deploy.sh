@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mkdir $HOME/daily/
 cp -R /home/travis/build/sreeramu/playground/build/app/outputs/apk/release/app-release.apk $HOME/daily/
 # go to home and setup git
