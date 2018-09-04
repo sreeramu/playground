@@ -1,5 +1,5 @@
 mkdir $HOME/daily/
-cp -R /home/travis/build/sreeramu/playground/build/app/outputs/apk/app-release.apk $HOME/daily/
+cp -R /home/travis/build/sreeramu/playground/build/app/outputs/apk/release/app-release.apk $HOME/daily/
 # go to home and setup git
 cd $HOME
 git config --global user.email "sreeramu@gmail.com"
