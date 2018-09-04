@@ -7,7 +7,7 @@ cd $HOME
 git config --global user.email "sreeramu@gmail.com"
 git config --global user.name "sreeramu"
   
-git clone --quiet --branch=development https://sreeramu:$GITHUB_API_KEY@github.com/sreeramu/flutter-notes  development > /dev/null
+git clone --quiet --branch=development https://sreeramu:$GITHUB_API_KEY@github.com/sreeramu/flutter-notes.git  development > /dev/null
 cd development
 mkdir sample-apk
 cp -Rf $HOME/daily/*  sample-apk/
