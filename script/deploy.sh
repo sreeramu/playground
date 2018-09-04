@@ -7,10 +7,11 @@ git config --global user.name "sreeramu"
   
 git clone --quiet --branch=development https://sreeramu:$GITHUB_API_KEY@github.com/sreeramu/flutter-notes  development > /dev/null
 cd development
+mkdir sample-apk
 cp -Rf $HOME/daily/*  sample-apk/
 git add -f .
-  # git remote rm origin
-  # git remote add origin https://sreeramu:$GITHUB_API_KEY@github.com/sreeramu/flutter-notes
-git add -f .
+# git remote rm origin
+# git remote add origin https://sreeramu:$GITHUB_API_KEY@github.com/sreeramu/flutter-notes
+#git add -f .
 git commit -m "Update Sample Apk [skip ci]"
 git push origin development > /dev/null
