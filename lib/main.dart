@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:polygon_clipper/polygon_clipper.dart';
 
 import './showcase.dart';
 import './workspace.dart';
@@ -57,13 +58,25 @@ class ImageTile extends StatelessWidget {
         ),
         body: new Padding(
             padding: const EdgeInsets.only(top: 12.0),
-            child: new StaggeredGridView.count(
+            child: ListView(
+  shrinkWrap: true,
+  children: <Widget>[new StaggeredGridView.count(
               crossAxisCount: 4,
               staggeredTiles: _staggeredTiles,
               children: _tiles,
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
-            )));
+            ),new ClipPolygon(  
+ sides: 6, 
+ borderRadius: 5.0, // Default 0.0 degrees
+ rotate: 90.0, // Default 0.0 degrees
+ boxShadows: [  
+  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
+  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
+ ],
+ child: new Container(color: Colors.black),
+)
+                    ])));
   }
 }
 
