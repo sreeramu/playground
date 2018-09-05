@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:polygon_clipper/polygon_clipper.dart';
 
 import './showcase.dart';
 import './workspace.dart';
