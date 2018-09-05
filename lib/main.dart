@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:playground/polygon_clipper.dart';
 
 import './showcase.dart';
 import './workspace.dart';
@@ -33,7 +34,6 @@ List<StaggeredTile> _staggeredTiles = const <StaggeredTile>[
   const StaggeredTile.count(4, 1),
 ];
 
-
 List<Widget> _tiles = const <Widget>[
   const _ImageTile('https://picsum.photos/200/300/?random'),
   const _ImageTile('https://picsum.photos/201/300/?random'),
@@ -49,7 +49,6 @@ List<Widget> _tiles = const <Widget>[
 
 class ImageTile extends StatelessWidget {
   @override
-
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
@@ -57,25 +56,25 @@ class ImageTile extends StatelessWidget {
         ),
         body: new Padding(
             padding: const EdgeInsets.only(top: 12.0),
-            child: ListView(
-  shrinkWrap: true,
-  children: <Widget>[new StaggeredGridView.count(
-              crossAxisCount: 4,
-              staggeredTiles: _staggeredTiles,
-              children: _tiles,
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0,
-            ),new ClipPolygon(  
- sides: 6, 
- borderRadius: 5.0, // Default 0.0 degrees
- rotate: 90.0, // Default 0.0 degrees
- boxShadows: [  
-  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
-  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
- ],
- child: new Container(color: Colors.black),
-)
-                    ])));
+            child: ListView(shrinkWrap: true, children: <Widget>[
+              new StaggeredGridView.count(
+                crossAxisCount: 4,
+                staggeredTiles: _staggeredTiles,
+                children: _tiles,
+                mainAxisSpacing: 4.0,
+                crossAxisSpacing: 4.0,
+              ),
+              new ClipPolygon(
+                sides: 6,
+                borderRadius: 5.0, // Default 0.0 degrees
+                rotate: 90.0, // Default 0.0 degrees
+                boxShadows: [
+                  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
+                  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
+                ],
+                child: new Container(color: Colors.black),
+              )
+            ])));
   }
 }
 
@@ -95,13 +94,12 @@ class _ImageTile extends StatelessWidget {
         },
         child: new Container(
             decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new NetworkImage(gridImage),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
-            )
-        ),
+          image: new DecorationImage(
+            image: new NetworkImage(gridImage),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: new BorderRadius.all(const Radius.circular(10.0)),
+        )),
       ),
     );
   }
