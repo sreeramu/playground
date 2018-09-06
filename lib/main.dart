@@ -56,7 +56,7 @@ class ImageTile extends StatelessWidget {
         ),
         body: new Padding(
             padding: const EdgeInsets.only(top: 12.0),
-            child: ListView(shrinkWrap: true, children: <Widget>[
+            /*child: ListView(shrinkWrap: true, children: <Widget>[
               new StaggeredGridView.count(
                 crossAxisCount: 4,
                 staggeredTiles: _staggeredTiles,
@@ -74,7 +74,18 @@ class ImageTile extends StatelessWidget {
                 ],
                 child: new Container(color: Colors.black),
               )
-            ])));
+            ])*/
+          child:new ClipPolygon(
+                sides: 6,
+                borderRadius: 5.0, // Default 0.0 degrees
+                rotate: 90.0, // Default 0.0 degrees
+                boxShadows: [
+                  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
+                  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
+                ],
+                child: new Container(color: Colors.black),
+              )
+        ));
   }
 }
 
