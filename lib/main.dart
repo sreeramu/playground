@@ -51,41 +51,35 @@ class ImageTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Staggered Image Grid'),
-        ),
-        body: new Padding(
-            padding: const EdgeInsets.only(top: 12.0),
-            /*child: ListView(shrinkWrap: true, children: <Widget>[
-              new StaggeredGridView.count(
-                crossAxisCount: 4,
-                staggeredTiles: _staggeredTiles,
-                children: _tiles,
-                mainAxisSpacing: 4.0,
-                crossAxisSpacing: 4.0,
-              ),
-              new ClipPolygon(
-                sides: 6,
-                borderRadius: 5.0, // Default 0.0 degrees
-                rotate: 90.0, // Default 0.0 degrees
-                boxShadows: [
-                  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
-                  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
-                ],
-                child: new Container(color: Colors.black),
-              )
-            ])*/
-          child:new ClipPolygon(
-                sides: 6,
-                borderRadius: 5.0, // Default 0.0 degrees
-                rotate: 90.0, // Default 0.0 degrees
-                boxShadows: [
-                  new PolygonBoxShadow(color: Colors.black, elevation: 1.0),
-                  new PolygonBoxShadow(color: Colors.grey, elevation: 5.0)
-                ],
-                child: new Container(color: Colors.black),
-              )
-        ));
+      appBar: AppBar(title: const Text('Bottom App Bar')),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.red,
+        onPressed: () {},
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        notchMargin: 5.0,
+        elevation: 5.0,
+        child: new BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            items: [
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.home),
+            title: new Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.mail),
+            title: new Text('Messages'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.mail),
+            title: new Text('Messages'),
+          ),
+        ]),
+      ),
+    );
   }
 }
 
