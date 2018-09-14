@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new TimelineExample(),
+      home: new Scaffold(appBar: AppBar(title: const Text('TimeLine')),child:new TimelineExample(),),
     );
   }
 }
