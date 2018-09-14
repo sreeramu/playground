@@ -28,12 +28,44 @@ class TimelineExample extends StatelessWidget {
   final List<TimelineModel> list = [
     TimelineModel(
       id: "1",
-      description: "Test 1",
-      title: "Test 1"),
+      description: "Yesvantpur Jn",
+      title: "Yesvantpur Jn"),
       TimelineModel(
       id: "2",
-      description: "Test 2",
-      title: "Test 2")
+      description: "Tunkur",
+      title: "Test 2"),
+    TimelineModel(
+      id: "3",
+      description: "Arsikere Jn",
+      title: "Test 3"),
+    TimelineModel(
+      id: "4",
+      description: "Hubli Jn",
+      title: "Test 4"),
+    TimelineModel(
+      id: "5",
+      description: "Dharwar",
+      title: "Test 5"),
+    TimelineModel(
+      id: "6",
+      description: "Test 6",
+      title: "Test 6"),
+    TimelineModel(
+      id: "7",
+      description: "Test 7",
+      title: "Test 7"),
+    TimelineModel(
+      id: "8",
+      description: "Test 8",
+      title: "Test 8"),
+    TimelineModel(
+      id: "9",
+      description: "Test 9",
+      title: "Test 9"),
+    TimelineModel(
+      id: "10",
+      description: "Test 10",
+      title: "Test 10")
   ];
 
   @override
