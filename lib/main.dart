@@ -98,8 +98,6 @@ class BottomBar extends StatelessWidget {
 
       color: color,
 
-      hasNotch: hasNotch,
-
       child: Row(
 
         children: <Widget>[
@@ -188,8 +186,6 @@ class CustomFab extends StatefulWidget {
 
 class CustomFabState extends State<CustomFab> {
 
-  VoidCallback _notchChange;
-
   @override
 
   Widget build(BuildContext context) {
@@ -233,24 +229,6 @@ class CustomFabState extends State<CustomFab> {
   void didChangeDependencies() {
 
     super.didChangeDependencies();
-
-    _notchChange =
-
-        Scaffold.setFloatingActionButtonNotchFor(context, computeNotch);
-
-  }
-
-  @override
-
-  void deactivate() {
-
-    if (_notchChange != null) {
-
-      _notchChange();
-
-    }
-
-    super.deactivate();
 
   }
 
