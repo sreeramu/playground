@@ -18,7 +18,7 @@ class AddCustomerForm extends StatefulWidget {
 }
 
 class _AddCustomerFormState extends State<AddCustomerForm> {
-  List<String> days = List<String>();
+  List<DayData> days = List<DayData>();
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     var oneDayDuration = Duration(days: 1);
     var fiftyDaysFromNow = today.add(new Duration(days: 50));
     while (today != fiftyDaysFromNow) {
-      days.add(today.day.toString());
+      days.add(DayData(today.day.toString(), false, today.weekday));
       today = today.add(oneDayDuration);
     }
   }
@@ -38,12 +38,15 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
       appBar: AppBar(
         title: Text('Customer'),
       ),
+      backgroundColor: Colors.grey,
       body: Center(
+          child: Container(
+        height: 50.0,
         child: ListView(
             // This next line does the trick.
             scrollDirection: Axis.horizontal,
             children: getListWidget()),
-      ),
+      )),
     );
   }
 
@@ -51,16 +54,56 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     List<Widget> widgetList = List<Widget>();
     days.forEach((f) {
       widgetList.add(Container(
-        width: 160.0,
-        height: 50.0,
-        color: Colors.red,
-        alignment: Alignment.center,
-        child: Text(
-          f,
-          style: TextStyle(color: Colors.white),
-        ),
-      ));
+          width: 50.0,
+          height: 50.0,
+          margin: EdgeInsets.only(right: 5.0),
+          color: Colors.white,
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Text(
+                f.dayWord,
+                style: TextStyle(color: Colors.black),
+              ),
+              Text(
+                f.dayNumber,
+                style: TextStyle(color: Colors.black),
+              )
+            ],
+          )));
     });
     return widgetList;
+  }
+}
+
+class DayData {
+  final String dayNumber;
+  String dayWord;
+  final bool isMonthStart;
+
+  DayData(this.dayNumber, this.isMonthStart, int weekDayNum) {
+    dayWord = getDayWord(weekDayNum);
+  }
+
+  String getDayWord(int weekday) {
+    switch (weekday) {
+      case 1:
+        return "Mon";
+      case 2:
+        return "Tue";
+      case 3:
+        return "Wed";
+      case 4:
+        return "Thu";
+      case 5:
+        return "Fri";
+      case 6:
+        return "Sat";
+      case 7:
+        return "Sun";
+      default:
+        return "";
+    }
   }
 }
