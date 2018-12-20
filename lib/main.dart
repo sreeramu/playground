@@ -28,7 +28,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     var fiftyDaysFromNow = today.add(new Duration(days: 50));
     while (today != fiftyDaysFromNow) {
       days.add(today.day.toString());
-      today.add(oneDayDuration);
+      today = today.add(oneDayDuration);
     }
   }
 
