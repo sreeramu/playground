@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'thermostat_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +11,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ThermostatScreen(),
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return HomeScreenState();
+  }
+}
+
+class HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text("PlayGround"),
     );
   }
 }
