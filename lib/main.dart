@@ -26,9 +26,14 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     var today = new DateTime.now();
     var oneDayDuration = Duration(days: 1);
     var fiftyDaysFromNow = today.add(new Duration(days: 50));
+    int preMonth;
     while (today != fiftyDaysFromNow) {
       days.add(DayData(today.day.toString(), false, today.weekday));
+      preMonth = today.month;
       today = today.add(oneDayDuration);
+      if (preMonth != today.month && today != fiftyDaysFromNow) {
+        days.add(DayData(today.day.toString(), true, today.weekday));
+      }
     }
   }
 
@@ -43,7 +48,6 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
           child: Container(
         height: 50.0,
         child: ListView(
-            // This next line does the trick.
             scrollDirection: Axis.horizontal,
             children: getListWidget()),
       )),
@@ -53,27 +57,46 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
   List<Widget> getListWidget() {
     List<Widget> widgetList = List<Widget>();
     days.forEach((f) {
-      widgetList.add(Container(
-          width: 50.0,
+      widgetList.add(getListItem(f));
+    });
+    return widgetList;
+  }
+
+  Widget getListItem(DayData data) {
+    if (!data.isMonthStart) {
+      return Container(
+          width: 60.0,
           height: 50.0,
-          margin: EdgeInsets.only(right: 5.0),
+          margin: EdgeInsets.only(right: 1.0),
           color: Colors.white,
           alignment: Alignment.center,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                f.dayWord,
+                data.dayWord,
                 style: TextStyle(color: Colors.black),
               ),
               Text(
-                f.dayNumber,
+                data.dayNumber,
                 style: TextStyle(color: Colors.black),
               )
             ],
-          )));
-    });
-    return widgetList;
+          ));
+    } else {
+      return Container(
+          width: 20.0,
+          height: 60.0,
+          margin: EdgeInsets.only(right: 1.0),
+          color: Colors.green,
+          alignment: Alignment.center,
+          child: new RotatedBox(
+              quarterTurns: 1,
+              child: new Text(
+                data.dayWord,
+                style: TextStyle(color: Colors.white),
+              )));
+    }
   }
 }
 
