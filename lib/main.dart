@@ -25,7 +25,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     super.initState();
     var today = new DateTime.now();
     var oneDayDuration = Duration(days: 1);
-    var fiftyDaysFromNow = today.add(new Duration(days: 50));
+    var fiftyDaysFromNow = today.add(new Duration(days: 120));
     int preMonth;
     while (today != fiftyDaysFromNow) {
       days.add(DayData(today.day.toString(), false, today.weekday));
@@ -46,19 +46,43 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
       backgroundColor: Colors.grey,
       body: Center(
           child: Container(
-        height: 50.0,
-        child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: getListWidget()),
-      )),
+              height: 50.0,
+              child: Stack(children: <Widget>[
+                ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: getListWidget()),
+                new Positioned(
+                  child: _getStickyHeaderWidget("Stick"),
+                  top: 0.0,
+                  bottom: 0.0,
+                  left: 0.0,
+                  right: null,
+                )
+              ]))),
     );
+  }
+
+  Widget _getStickyHeaderWidget(String data) {
+    return Container(
+        width: 20.0,
+        height: 60.0,
+        margin: EdgeInsets.only(right: 1.0),
+        color: Colors.green,
+        alignment: Alignment.center,
+        child: RotatedBox(
+            quarterTurns: 3,
+            child: new Text(
+              data,
+              style: TextStyle(color: Colors.white),
+            )));
   }
 
   List<Widget> getListWidget() {
     List<Widget> widgetList = List<Widget>();
-    days.forEach((f) {
-      widgetList.add(getListItem(f));
-    });
+    widgetList.add(_getStickyHeaderWidget(days[0].dayWord));
+    for (int i = 0; i < days.length; i++) {
+      widgetList.add(getListItem(days[i]));
+    }
     return widgetList;
   }
 
@@ -84,18 +108,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
             ],
           ));
     } else {
-      return Container(
-          width: 20.0,
-          height: 60.0,
-          margin: EdgeInsets.only(right: 1.0),
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: new RotatedBox(
-              quarterTurns: 1,
-              child: new Text(
-                data.dayWord,
-                style: TextStyle(color: Colors.white),
-              )));
+      return _getStickyHeaderWidget(data.dayWord);
     }
   }
 }
