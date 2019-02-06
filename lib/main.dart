@@ -46,7 +46,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> with SingleTickerProv
         title: Text('Customer'),
       ),
       backgroundColor: Colors.grey,
-      body: Center(child: CustomPaint(painter: CrossPainter(_fraction))),
+      body: Center(child: CustomPaint(painter: CirclePainter(_fraction))),
     );
   }
 }
