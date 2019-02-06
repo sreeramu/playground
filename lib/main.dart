@@ -18,7 +18,7 @@ class AddCustomerForm extends StatefulWidget {
   _AddCustomerFormState createState() => _AddCustomerFormState();
 }
 
-class _AddCustomerFormState extends State<AddCustomerForm> {
+class _AddCustomerFormState extends State<AddCustomerForm> with SingleTickerProviderStateMixin{
   double _fraction = 0.0;
   Animation<double> animation;
  
