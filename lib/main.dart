@@ -27,7 +27,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> with SingleTickerProv
   void initState() {
     super.initState();
     var controller = AnimationController(
-        duration: Duration(milliseconds: 1000), vsync: this);
+        duration: Duration(milliseconds: 30000), vsync: this);
  
     animation = Tween(begin: 0.0, end: 1.0).animate(controller)
       ..addListener(() {
@@ -52,7 +52,7 @@ class _AddCustomerFormState extends State<AddCustomerForm> with SingleTickerProv
                 aspectRatio: 1.0,
                 child: Container(
                     padding: EdgeInsets.all(32.0),
-                    child: CustomPaint(painter: CirclePainter())))),
+                    child: CustomPaint(painter: CirclePainter(_fraction))))),
     );
   }
 }
